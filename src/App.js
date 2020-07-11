@@ -23,9 +23,11 @@ const Content = styled.div`
 
 function App() {
 
-	const consultAPI = (e) => {
-		e.preventDefailt();
-		console.log('consultando');
+	const consultAPI = async () => {
+		const api = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
+		const phrase = await api.json();
+
+		console.log(phrase[0]);
 
 	};
 	return (
