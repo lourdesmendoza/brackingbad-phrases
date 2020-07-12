@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
+
+import Phrase from './components/Phrase';
 
 const Button = styled.button`
 	background:-webkit-linear-gradient(top left, #007d35 0%, #007d35 40%, #0f574e 100%);
@@ -23,15 +25,21 @@ const Content = styled.div`
 
 function App() {
 
+	// Phrases state
+	const [phrase, setPhrase] = useState({});
+
 	const consultAPI = async () => {
 		const api = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
 		const phrase = await api.json();
 
-		console.log(phrase[0]);
-
+		setPhrase(phrase[0]);
 	};
+
 	return (
 		<Content>
+			<Phrase
+				phrase={phrase}
+				/>
 			<Button
 				onClick={consultAPI}>
 				Get phrase
