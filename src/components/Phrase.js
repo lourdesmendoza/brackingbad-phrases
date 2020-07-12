@@ -37,6 +37,7 @@ const ContentPhrase = styled.div`
 `;
 
 const Phrase = ({phrase}) => {
+    
     return (
         <ContentPhrase>
             <h1>{phrase.quote}</h1>
